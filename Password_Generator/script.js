@@ -15,6 +15,27 @@ function generatePassword() {
     length: 12,
   };
 
+  var passwordLength = window.prompt("How many characters in your password? Must be between 8 and 128 characters long");
+
+  if (passwordLength.length == 0) {
+    alert("Please add a value");
+    return;
+  }
+
+  options.length = parseInt(passwordLength, 10);
+
+  // todo: handle invalid numbers (e.g. "i am not a number")
+
+  if (isNaN(options.length) || options.length < 8 || options.length > 128) {
+    alert("Please choose between 8 and 128 character please");
+    return;
+  } else {
+    options.lowerCase = window.confirm("Password Criteria: \nLower Case Letters?");
+    options.upperCase = window.confirm("Upper Case Letters?");
+    options.number = window.confirm("Numbers?");
+    options.symbols = window.confirm("Special Characters?");
+  };
+
   var stringOptions = "";
 
   if (options.number) {
@@ -53,6 +74,8 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
