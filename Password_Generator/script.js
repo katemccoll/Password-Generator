@@ -1,6 +1,50 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function generatePassword() {
+  var number = "1234567890";
+  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+  var symbols = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+  var options = {
+    number: true,
+    upperCase: true,
+    lowerCase: true,
+    symbols: true,
+    length: 12,
+  };
+
+  var stringOptions = "";
+
+  if (options.number) {
+    stringOptions += number;
+  }
+
+  if (options.upperCase) {
+    stringOptions += upperCase;
+  }
+
+  if (options.lowerCase) {
+    stringOptions += lowerCase;
+  }
+
+  if (options.symbols) {
+    stringOptions += symbols;
+  }
+
+  var password = "";
+
+  for (var i = 0; i < options.length; i++) {
+    var randomIndex = Math.floor(Math.random() * stringOptions.length);
+    password += stringOptions[randomIndex];
+  }
+
+  return password;
+
+}
+
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -12,26 +56,6 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-// My Work
-// Do I need to put these in a array?
-var number = "1234567890"
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var lowerCase = "abcdefghijklmnopqrstuvwxyz"
-var symbols = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-
-var options = {
-  number: true,
-  upperCase: true,
-  lowerCase: true,
-  specialCharacters: true,
-  // length: true,
-}
-
-var characters = Math.ceil(Math.random() * options.length);
-var computerChoice = options[index];
 
 
 
